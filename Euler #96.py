@@ -44,8 +44,6 @@ def solve(puzzle):
 
     solved = [line[:] for line in puzzle]
 
-    return
-
 
 start = default_timer()
 solution = 0
