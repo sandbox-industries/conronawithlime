@@ -30,7 +30,7 @@ def get_possible(y, x, puzzle):
 
 def solve(puzzle):
 
-    global complete
+    global solved
     for y in range(9):
         for x in range(9):
             if puzzle[y][x] == 0:
@@ -40,21 +40,21 @@ def solve(puzzle):
                     solve(puzzle)
                     puzzle[y][x] = 0
 
-                return complete
+                return
 
-    complete = [line[:] for line in puzzle]
+    solved = [line[:] for line in puzzle]
 
     return
 
 
 start = default_timer()
-nums = 0
+solution = 0
 for i in range(1, 51):
     sudoku = read_sudoku(i)
-    complete = None
+    solved = None
     solve(sudoku)
-    nums += int(''.join((str(i) for i in complete[0][:3])))
+    solution += int(''.join((str(i) for i in solved[0][:3])))
 
 stop = default_timer()
-print(nums)
+print(solution)
 print(stop-start)
