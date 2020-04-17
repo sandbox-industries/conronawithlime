@@ -48,15 +48,13 @@ def solve(puzzle):
 
 
 start = default_timer()
-nums = []
+nums = 0
 for i in range(1, 51):
     sudoku = read_sudoku(i)
     complete = None
     solve(sudoku)
-    nums.append(int(''.join((str(i) for i in complete[0][:3]))))
+    nums += int(''.join((str(i) for i in complete[0][:3])))
 
 stop = default_timer()
 print(nums)
-print(sum(nums))
 print(stop-start)
-
