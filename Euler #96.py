@@ -37,7 +37,11 @@ def get_possible(y, x, puzzle):
 
 def solve(puzzle):
 
-    global solved
+    global done
+    global solution
+
+    if done:
+        return
     for y in range(9):
         for x in range(9):
             if puzzle[y][x] == 0:
@@ -49,8 +53,8 @@ def solve(puzzle):
 
                 return
 
-    solved = [line[:] for line in puzzle]
-    return
+    solution += int(''.join((str(i) for i in puzzle[0][:3])))
+    done = True
 
 
 solution = 0
@@ -60,9 +64,8 @@ start = default_timer()
 
 for sudoku in sudokus:
 
-    solved = None
+    done = False
     solve(sudoku)
-    solution += int(''.join((str(i) for i in solved[0][:3])))
     pbar.update(1)
 
 stop = default_timer()
