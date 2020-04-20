@@ -41,10 +41,11 @@ def solve(puzzle):
         for x in range(9):
             if puzzle[y][x] == 0:
                 p = get_possible(y, x, puzzle)
+
                 for num in p:
                     puzzle[y][x] = num
-
                     if solve(puzzle):
+
                         return True
 
                 puzzle[y][x] = 0
