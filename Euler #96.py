@@ -43,10 +43,11 @@ def solve(puzzle):
                 p = get_possible(y, x, puzzle)
                 for num in p:
                     puzzle[y][x] = num
+
                     if solve(puzzle):
                         return True
-                    puzzle[y][x] = 0
 
+                puzzle[y][x] = 0
                 return
 
     return True
