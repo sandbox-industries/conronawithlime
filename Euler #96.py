@@ -9,11 +9,8 @@ def read_sudoku():
 
     with open(path) as s:
         puzzles = s.readlines()
-        # Strip newline characters
         puzzles = [line.strip('\n') for line in puzzles]
-        # Delete grid markers every 10th element
         del puzzles[0::10]
-        # Split each puzzle into ints own list, changing str to int
         for idx in range(0, len(puzzles), 9):
             grid_list.append([list(map(int, num)) for num in puzzles[idx:idx+9]])
 
@@ -41,11 +38,9 @@ def solve(puzzle):
         for x in range(9):
             if puzzle[y][x] == 0:
                 p = get_possible(y, x, puzzle)
-
                 for num in p:
                     puzzle[y][x] = num
                     if solve(puzzle):
-
                         return True
 
                 puzzle[y][x] = 0
@@ -57,11 +52,10 @@ def solve(puzzle):
 solution = 0
 sudokus = read_sudoku()
 pbar = trange(len(sudokus))
+
 start = default_timer()
-solution = 0
 
 for sudoku in sudokus:
-
     # print(sudoku)
     solve(sudoku)
     # print(sudoku)
